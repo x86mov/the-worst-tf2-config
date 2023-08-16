@@ -1,0 +1,323 @@
+"UnlitGeneric"
+{
+	"$basetexture" "vgui/replay/thumbnails/funnyd3"
+	"$translucent" 1
+	"$vertexcolor" 1
+	"$no_fullbright" 1
+	"$ignorez" 1
+	
+	$speed			"0"
+	$thou			"0"
+	$thou_int		"0"
+	$hund			"0"
+	$hund_int		"0"
+	$ten			"0"
+	$ten_int		"0"
+	$thou_int_10	"0"
+	$hund_int_10	"0"
+	$ten_int_10		"0"
+	
+	$const_thou		"1000"
+	$const_hund		"100"
+	$const_ten		"10"
+
+$avgfpshere 144
+$displayseachsecond 25
+
+$pastpos "[0.0 0.0 0.0]"
+$pastposX .0
+$pastposY .0
+$currentposX .0
+$currentposY .0
+$subposX .0
+$subposY .0
+$pastpos1 .0
+$zero 0
+$pasttime 0 
+$currenttime 0
+$timediff 0.0033
+$velocityx 0
+$velocityy 0
+$addsvelocity 0
+$half 0.5
+$temp1 0
+$initguess 1
+$left 0.0
+$right 0.0
+$lradd 0.0
+$guessholder 0.0
+$nextguess 0.0
+$timercount 0
+$timer1 0
+$timer2 0
+$timer3 0
+$timer4 0
+$timer5 0
+$five 5
+$four 4
+$three 3
+$two 2
+$one 1
+$timersumtemp 0
+$timersum 0
+$timeravg 0
+$maxfpsdiv3 0
+$playerspeed .0
+$playerspeed2 .0
+$distmoved .0
+$frametime .0
+$posx2 .0
+$posy2 .0
+$posz2 .0
+$distmovesumtemp .0
+$pastposZ .0
+$currentposZ .0
+$subposZ .0
+$hd2 .0
+$constant 1000.0
+$const300 300
+$velZ 0
+$isabove300 0
+$const650 650
+$falldamage 0
+$playerHealth 0
+$playerMaxHealth 0
+$const200 200
+	Proxies {
+	PlayerPosition
+        {
+        "scale" "1"
+        "resultVar" "$pastpos"
+        }
+	PlayerSpeed
+	{
+	"scale" "1"
+	"resultVar" "$playerspeed"
+	}
+	Multiply
+	{
+	"srcVar1" "$playerHealth"
+	"srcVar2" "$const200"
+	"resultVar" "$playerHealth"
+	}
+	Multiply
+	{
+	"srcVar1" "$playerspeed"
+	"srcVar2" "$playerspeed"
+	"resultVar" "$playerspeed2"
+	}
+	Divide
+	{
+	"srcVar1" "$one"
+	"srcVar2" "$avgfpshere"
+	"resultVar" "$timediff"
+	}
+	Divide
+	{
+	"srcVar1" "$avgfpshere"
+	"srcVar2" "$displayseachsecond"
+	"resultVar" "$maxfpsdiv3"
+	}
+	Int
+	{
+	"srcVar1" "$maxfpsdiv3"
+	"resultVar" "$maxfpsdiv3"
+	}
+	Clamp
+	{
+	"srcVar1" "$zero"
+	"min" "$pastpos[0]"
+	"max" "$pastpos[0]"
+	"resultVar" "$currentposX"
+	}
+	Clamp
+	{
+	"srcVar1" "$zero"
+	"min" "$pastpos[1]"
+	"max" "$pastpos[1]"
+	"resultVar" "$currentposY"
+	}
+	Clamp
+	{
+	"srcVar1" "$zero"
+	"min" "$pastpos[2]"
+	"max" "$pastpos[2]"
+	"resultVar" "$currentposZ"
+	}
+	Subtract
+	{
+	"srcVar1" "$currentposX"
+	"srcVar2" "$pastposX"
+	"resultVar" "$subposX"
+	}
+	Subtract
+	{
+	"srcVar1" "$currentposY"
+	"srcVar2" "$pastposY"
+	"resultVar" "$subposY"
+	}
+	Subtract
+	{
+	"srcVar1" "$currentposZ"
+	"srcVar2" "$pastposZ"
+	"resultVar" "$subposZ"
+	}
+	Abs
+	{
+	"srcVar1" "$subposX"
+	"resultVar" "$subposX"
+	}
+	Abs
+	{
+	"srcVar1" "$subposY"
+	"resultVar" "$subposY"
+	}
+	Abs
+	{
+	"srcVar1" "$subposZ"
+	"resultVar" "$subposZ"
+	}
+	Equals
+	{
+	"srcVar1" "$currentposX"
+	"resultVar" "$pastposX"
+	}
+	Equals
+	{
+	"srcVar1" "$currentposY"
+	"resultVar" "$pastposY"
+	}
+	Equals
+	{
+	"srcVar1" "$currentposZ"
+	"resultVar" "$pastposZ"
+	}
+	Multiply
+	{
+	"srcVar1" "$subposX"
+	"srcVar2" "$subposX"
+	"resultVar" "$posx2"
+	}
+	Multiply
+	{
+	"srcVar1" "$subposY"
+	"srcVar2" "$subposY"
+	"resultVar" "$posy2"
+	}
+	Multiply
+	{
+	"srcVar1" "$subposZ"
+	"srcVar2" "$subposZ"
+	"resultVar" "$posz2"
+	}
+	Add
+	{
+	"srcVar1" "$posx2"
+	"srcVar2" "$posy2"
+	"resultVar" "$distmovesumtemp"
+	}
+	Add
+	{
+	"srcVar1" "$distmovesumtemp"
+	"srcVar2" "$posz2"
+	"resultVar" "$distmovesumtemp"
+	}
+	SelectFirstIfNonZero
+	{
+	"srcVar1" "$playerspeed2"
+	"srcVar2" "$one"
+	"resultVar" "$playerspeed2"
+	}
+	SelectFirstIfNonZero
+	{
+	"srcVar1" "$distmovesumtemp"
+	"srcVar2" "$one"
+	"resultVar" "$distmovesumtemp"
+	}
+	Divide
+	{
+	"srcVar1" "$distmovesumtemp"
+	"srcVar2" "$playerspeed2"
+	"resultVar" "$frametime"
+	}
+	Divide
+	{
+	"srcVar1" "$subposZ"
+	"srcVar2" "$timediff"
+	"resultVar" "$velZ"
+	}
+	Divide
+	{
+	"srcVar1" "$velZ"
+	"srcVar2" "$const300"
+	"resultVar" "$right"
+	}
+	Multiply
+	{
+	"srcVar1" "$right"
+	"srcVar2" "$five"
+	"resultVar" "$falldamage"
+	}
+	Divide
+	{
+	"srcVar1" "$one"
+	"srcVar2" "$frametime"
+	"resultVar" "$frametime"
+	}
+	Equals
+	{
+	"srcVar1" "$velZ"
+	"resultVar" "$speed"
+	}
+
+
+
+		Divide {
+			srcVar1		"$speed"
+			srcVar2		"$const_thou"
+			resultVar	"$thou"
+		}
+		Int {
+			srcVar1		"$thou"
+			resultVar	"$thou_int"
+		}
+		Divide {
+			srcVar1		"$speed"
+			srcVar2		"$const_hund"
+			resultVar	"$hund"
+		}
+		Int {
+			srcVar1		"$hund"
+			resultVar	"$hund_int"
+		}
+		Divide {
+			srcVar1		"$speed"
+			srcVar2		"$const_ten"
+			resultVar	"$ten"
+		}
+		Int {
+			srcVar1		"$ten"
+			resultVar	"$ten_int"
+		}
+		Multiply {
+			srcVar1		"$thou_int"
+			srcVar2		"$const_ten"
+			resultVar	"$thou_int_10"
+		}
+		Multiply {
+			srcVar1		"$hund_int"
+			srcVar2		"$const_ten"
+			resultVar	"$hund_int_10"
+		}
+		Multiply {
+			srcVar1		"$ten_int"
+			srcVar2		"$const_ten"
+			resultVar	"$ten_int_10"
+		}
+		Subtract {
+			srcVar1		"$hund_int"
+			srcVar2		"$thou_int_10"
+			resultVar	"$frame"
+		}
+	}
+}

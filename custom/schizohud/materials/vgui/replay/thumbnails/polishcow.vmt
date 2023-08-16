@@ -1,0 +1,29 @@
+"UnlitGeneric"
+{
+	"$basetexture" "vgui/replay/thumbnails/bettercow"
+	"$translucent" 1
+	"$vertexcolor" 1
+	"$no_fullbright" 1
+	"$ignorez" 1
+	
+	$frameinterval	"30"
+	$framecounter	"0"
+	$const_one	"1"
+	$const_zero	"0"
+	$constfloat	"0.07"
+	$addtoframe	"0"
+	Proxies {
+	Add{
+		srcVar1		"$constfloat"
+		srcVar2		"$frame"
+		resultVar		"$frame"
+	}
+	WrapMinMax{
+		srcVar1		"$frame"
+		minVal		"0"
+		maxVal		"36"
+		resultVar		"$frame"
+	}	
+	}
+
+}

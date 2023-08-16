@@ -1,0 +1,43 @@
+"UnlitGeneric"
+{
+	"$basetexture" "vgui/replay/thumbnails/funnyd1"
+	"$translucent" 1
+	"$vertexcolor" 1
+	"$no_fullbright" 1
+	"$ignorez" 1
+	
+	$view			"0"
+	$thou			"0"
+	$thou_int		"0"
+	$hund			"0"
+	$hund_int		"0"
+	$ten			"0"
+	$ten_int		"0"
+	$thou_int_10	"0"
+	$hund_int_10	"0"
+	$ten_int_10		"0"
+	$speed_int		"0"
+	$playerviewvector "[0.0 0.0 0.0 0.0 0.0 0.0]"
+	$yaw ".0"
+	$const_thou		"1000"
+	$const_hund		"100"
+	$const_ten		"10"
+	$const_one		"1"
+	Proxies {
+	PlayerView{
+		scale "10"
+		resultVar "$yaw"
+	}
+	EntityOrigin{
+
+	}
+	WrapMinMax // Convert speed to texture frame
+	{
+		srcVar1 "$entityorigin[0]"
+		maxVal "$const_ten"
+		resultVar "$frame"
+	}
+	}
+
+}
+

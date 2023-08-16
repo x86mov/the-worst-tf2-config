@@ -1,0 +1,40 @@
+"UnlitGeneric"
+{
+	"$basetexture" "vgui/replay/thumbnails/betternumber"
+	"$translucent" 1
+	"$vertexcolor" 1
+	"$no_fullbright" 1
+	"$ignorez" 1
+	
+	$counter	"0"
+	$const_ten	"10"
+	$finalframe	"0"
+
+	Proxies {
+	Sine{
+		sineperiod	"5"
+		sinemin		"0"
+		sinemax		"73"
+		timeoffset	"0"
+		resultVar	"$frame"
+	}
+	WrapMinMax{
+		srcVar1		"$frame"
+		minVal		"0"
+		maxVal		"73"
+		resultVar	"$frame"
+	}
+	Divide{
+		srcVar1		"$frame"
+		srcVar2		"$const_ten"
+		resultVar	"$frame"
+	}
+	WrapMinMax{
+		srcVar1		"$frame"
+		minVal		"0"
+		maxVal		"10"
+		resultVar	"$frame"
+	}
+	}
+
+}

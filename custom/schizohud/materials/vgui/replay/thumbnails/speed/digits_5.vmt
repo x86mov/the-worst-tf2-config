@@ -1,0 +1,419 @@
+UnlitGeneric
+{
+"$baseTexture" "vgui\replay\thumbnails\speed\digits_1"
+$translucent 1
+$alpha 1
+$vertexalpha 1
+$ignorez 1
+$no_fullbright 1
+$vertexcolor 1
+
+$const1 100
+$const2 10
+$tmp1 0
+$tmp2 0
+$tmp3 0
+$speed 0
+$res1 0
+$res2 0
+$tmp4 0
+$tmp5 0
+$const3 0.05
+$speed2 0
+$const4 9999
+
+$pastpos "[0.0 0.0 0.0]"
+$pastposX .0
+$pastposY .0
+$currentposX .0
+$currentposY .0
+$subposX .0
+$subposY .0
+$pastpos1 .0
+$zero 0
+$pasttime 0 
+$currenttime 0
+$timediff 0.0069
+$velocityx 0
+$velocityy 0
+$addsvelocity 0
+$half 0.5
+$temp1 0
+$initguess 1
+$left 0.0
+$right 0.0
+$lradd 0.0
+$guessholder 0.0
+$nextguess 0.0
+
+    Proxies
+      {
+
+PlayerPosition
+        {
+        "scale" "1"
+        "resultVar" "$pastpos"
+        }
+	Clamp
+	{
+	"srcVar1" "$zero"
+	"min" "$pastpos[0]"
+	"max" "$pastpos[0]"
+	"resultVar" "$currentposX"
+	}
+	Clamp
+	{
+	"srcVar1" "$zero"
+	"min" "$pastpos[1]"
+	"max" "$pastpos[1]"
+	"resultVar" "$currentposY"
+	}
+	Abs
+	{
+	"srcVar1" "$currentposX"
+	"resultVar" "$currentposX"
+	}
+	Abs
+	{
+	"srcVar1" "$currentposY"
+	"resultVar" "$currentposY"
+	}
+	Subtract
+	{
+	"srcVar1" "$currentposX"
+	"srcVar2" "$pastposX"
+	"resultVar" "$subposX"
+	}
+	Subtract
+	{
+	"srcVar1" "$currentposY"
+	"srcVar2" "$pastposY"
+	"resultVar" "$subposY"
+	}
+	Abs
+	{
+	"srcVar1" "$subposX"
+	"resultVar" "$subposX"
+	}
+	Abs
+	{
+	"srcVar1" "$subposY"
+	"resultVar" "$subposY"
+	}
+	Equals
+	{
+	"srcVar1" "$currentposX"
+	"resultVar" "$pastposX"
+	}
+	Equals
+	{
+	"srcVar1" "$currentposY"
+	"resultVar" "$pastposY"
+	}
+	Divide
+	{
+	"srcVar1" "$subposX"
+	"srcVar2" "$timediff"
+	"resultVar" "$velocityX"
+	}
+	Divide
+	{
+	"srcVar1" "$subposY"
+	"srcVar2" "$timediff"
+	"resultVar" "$velocityY"
+	}
+	Multiply
+	{
+	"srcVar1" "$velocityX"
+	"srcVar2" "$velocityX"
+	"resultVar" "$velocityX"
+	}
+	Multiply
+	{
+	"srcVar1" "$velocityY"
+	"srcVar2" "$velocityY"
+	"resultVar" "$velocityY"
+	}
+	Add
+	{
+	"srcVar1" "$velocityX"
+	"srcVar2" "$velocityY"
+	"resultVar" "$addsvelocity"
+	}
+	Divide
+	{
+	"srcVar1" "$addsvelocity"
+	"srcVar2" "$initguess"
+	"resultVar" "$right"
+	}
+	Add
+	{
+	"srcVar1" "$initguess"
+	"srcVar2" "$right"
+	"resultVar" "$right"
+	}
+	Multiply
+	{
+	"srcVar1" "$half"
+	"srcVar2" "$right"
+	"resultVar" "$guessholder"
+	}
+	Divide
+	{
+	"srcVar1" "$addsvelocity"
+	"srcVar2" "$guessholder"
+	"resultVar" "$right"
+	}
+	Add
+	{
+	"srcVar1" "$guessholder"
+	"srcVar2" "$right"
+	"resultVar" "$right"
+	}
+	Multiply
+	{
+	"srcVar1" "$half"
+	"srcVar2" "$right"
+	"resultVar" "$guessholder"
+	}
+	Divide
+	{
+	"srcVar1" "$addsvelocity"
+	"srcVar2" "$guessholder"
+	"resultVar" "$right"
+	}
+	Add
+	{
+	"srcVar1" "$guessholder"
+	"srcVar2" "$right"
+	"resultVar" "$right"
+	}
+	Multiply
+	{
+	"srcVar1" "$half"
+	"srcVar2" "$right"
+	"resultVar" "$guessholder"
+	}
+Divide
+	{
+	"srcVar1" "$addsvelocity"
+	"srcVar2" "$guessholder"
+	"resultVar" "$right"
+	}
+	Add
+	{
+	"srcVar1" "$guessholder"
+	"srcVar2" "$right"
+	"resultVar" "$right"
+	}
+	Multiply
+	{
+	"srcVar1" "$half"
+	"srcVar2" "$right"
+	"resultVar" "$guessholder"
+	}
+Divide
+	{
+	"srcVar1" "$addsvelocity"
+	"srcVar2" "$guessholder"
+	"resultVar" "$right"
+	}
+	Add
+	{
+	"srcVar1" "$guessholder"
+	"srcVar2" "$right"
+	"resultVar" "$right"
+	}
+	Multiply
+	{
+	"srcVar1" "$half"
+	"srcVar2" "$right"
+	"resultVar" "$guessholder"
+	}
+Divide
+	{
+	"srcVar1" "$addsvelocity"
+	"srcVar2" "$guessholder"
+	"resultVar" "$right"
+	}
+	Add
+	{
+	"srcVar1" "$guessholder"
+	"srcVar2" "$right"
+	"resultVar" "$right"
+	}
+	Multiply
+	{
+	"srcVar1" "$half"
+	"srcVar2" "$right"
+	"resultVar" "$guessholder"
+	}
+Divide
+	{
+	"srcVar1" "$addsvelocity"
+	"srcVar2" "$guessholder"
+	"resultVar" "$right"
+	}
+	Add
+	{
+	"srcVar1" "$guessholder"
+	"srcVar2" "$right"
+	"resultVar" "$right"
+	}
+	Multiply
+	{
+	"srcVar1" "$half"
+	"srcVar2" "$right"
+	"resultVar" "$guessholder"
+	}
+Divide
+	{
+	"srcVar1" "$addsvelocity"
+	"srcVar2" "$guessholder"
+	"resultVar" "$right"
+	}
+	Add
+	{
+	"srcVar1" "$guessholder"
+	"srcVar2" "$right"
+	"resultVar" "$right"
+	}
+	Multiply
+	{
+	"srcVar1" "$half"
+	"srcVar2" "$right"
+	"resultVar" "$guessholder"
+	}
+Divide
+	{
+	"srcVar1" "$addsvelocity"
+	"srcVar2" "$guessholder"
+	"resultVar" "$right"
+	}
+	Add
+	{
+	"srcVar1" "$guessholder"
+	"srcVar2" "$right"
+	"resultVar" "$right"
+	}
+	Multiply
+	{
+	"srcVar1" "$half"
+	"srcVar2" "$right"
+	"resultVar" "$guessholder"
+	}
+Divide
+	{
+	"srcVar1" "$addsvelocity"
+	"srcVar2" "$guessholder"
+	"resultVar" "$right"
+	}
+	Add
+	{
+	"srcVar1" "$guessholder"
+	"srcVar2" "$right"
+	"resultVar" "$right"
+	}
+	Multiply
+	{
+	"srcVar1" "$half"
+	"srcVar2" "$right"
+	"resultVar" "$guessholder"
+	}
+Divide
+	{
+	"srcVar1" "$addsvelocity"
+	"srcVar2" "$guessholder"
+	"resultVar" "$right"
+	}
+	Add
+	{
+	"srcVar1" "$guessholder"
+	"srcVar2" "$right"
+	"resultVar" "$right"
+	}
+	Multiply
+	{
+	"srcVar1" "$half"
+	"srcVar2" "$right"
+	"resultVar" "$guessholder"
+	}
+
+	Equals
+	{
+	"srcVar1" "$guessholder"
+	"resultVar" "$speed2"
+	}
+	
+	LessOrEqual
+	{
+	"lessEqualVar" "$speed2"
+	"greaterVar" "$const4"
+	"srcVar1" "$speed2"
+	"srcVar2" "$const4"
+	"resultVar" "$speed2"
+	}
+
+        Add
+        {
+        "srcVar1" "$speed2"
+        "srcVar2" "$const3"
+        "resultVar" "$speed"
+        }
+       
+        Divide
+        {
+        "srcVar1" "$speed"
+        "srcVar2" "$const1"
+        "resultVar" "$tmp1"
+        }
+
+        Frac
+        {
+        "srcVar1" "$tmp1"
+        "resultVar" "$res1"
+        }
+
+       Multiply
+        {
+        "srcVar1" "$res1"
+        "srcVar2" "$const1"
+        "resultVar" "$tmp2"
+        }
+    
+        Subtract
+        {
+        "srcVar1" "$speed"
+        "srcVar2" "$tmp2"
+        "resultVar" "$res2"
+        }
+
+       Divide
+        {
+        "srcVar1" "$res1"
+        "srcVar2" "$const2"
+        "resultVar" "$tmp3"
+        }
+
+        Frac
+        {
+        "srcVar1" "$tmp3"
+        "resultVar" "$tmp4"
+        }
+
+       Multiply
+        {
+        "srcVar1" "$tmp4"
+        "srcVar2" "$const2"
+        "resultVar" "$tmp5"
+        }
+    
+        Subtract
+        {
+        "srcVar1" "$res1"
+        "srcVar2" "$tmp5"
+        "resultVar" "$frame"
+        }
+
+      }
+}

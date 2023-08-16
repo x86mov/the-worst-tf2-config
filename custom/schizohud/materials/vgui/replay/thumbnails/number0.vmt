@@ -1,0 +1,20 @@
+"UnlitGeneric"
+{
+	"$basetexture" "vgui/replay/thumbnails/betternumber"
+	"$translucent" 1
+	"$vertexcolor" 1
+	"$no_fullbright" 1
+	"$ignorez" 1
+	
+	$counter	"0"
+	$const_ten	"10"
+	$finalframe	"0"
+
+	Proxies {
+	Equals{
+		srcVar1		"$counter"
+		resultVar	"$frame"
+	}
+	}
+
+}

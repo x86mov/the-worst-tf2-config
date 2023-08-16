@@ -1,0 +1,19 @@
+event DamagedPlayer
+{
+	StopEvent HitMarker 				0.0
+	RunEvent HitMarker 					0.01
+}
+
+event HitMarker
+{
+	Animate crosshair1 Alpha "255" Linear 0.0 0.0
+	Animate crosshair1 wide "48" Linear 0.0 0.0
+	Animate crosshair1 tall "48" Linear 0.0 0.0
+	Animate crosshair1 xpos "c-24" Linear 0.0 0.0
+	Animate crosshair1 ypos "c-24" Linear 0.0 0.0
+	Animate crosshair1 xpos "c-16" Linear 0.0 0.3
+	Animate crosshair1 ypos "c-16" Linear 0.0 0.3
+	Animate crosshair1 wide "32" Linear 0.0 0.3
+	Animate crosshair1 tall "32" Linear 0.0 0.3
+	Animate crosshair1 Alpha "0" Linear 0.0 0.7
+}

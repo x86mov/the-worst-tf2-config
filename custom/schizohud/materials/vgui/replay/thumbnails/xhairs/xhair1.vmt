@@ -1,0 +1,65 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"vgui\replay\thumbnails\xhairs\xhair25" // Crosshair1 shape
+	"$startAngle"		"32"	// Crosshair1 angle
+	"$rotateSpeedDir"	"120"	// Crosshair1 rotate speed
+	"$rotateSpeed"		"0"
+	"$multiplier"		"-1"
+	"$angle"			"0"
+	"$translate"		"[0.0 0.0]"
+	"$center"			"[0.5 0.5]"
+	"$vertexcolor"		"1"
+	"$no_fullbright"	"1"
+	"$vertexalpha"		"1"
+	"$ignorez"			"1"
+	"$const"		"255.0"
+	"$result"		"1.0"
+	"$translucent"		"1"
+	"$alpha" "127"
+	"$randomnum"	"1.0"
+	"$const_hund"	"100"
+	"$const_one"	"1.0"
+	"$const_two"	"1.0"
+	"Proxies"
+	{
+		"EntityRandom"
+		{
+			"scale"		"100"
+			"resultVar"	"$randomnum"
+		}
+		"Multiply"
+		{
+			"srcVar1" 		"$rotateSpeedDir"
+			"srcVar2" 		"$randomnum"
+			"resultVar" 	"$rotateSpeedDir"
+		}
+		"Multiply"
+		{
+			"srcVar1" 		"$rotateSpeedDir"
+			"srcVar2" 		"$const_one"
+			"resultVar" 	"$rotateSpeedDir"
+		}
+		"Multiply"
+		{
+			"srcVar1" 		"$rotateSpeedDir"
+			"srcVar2" 		"$multiplier"
+			"resultVar" 	"$rotateSpeed"
+		}
+		"LinearRamp"
+		{
+			"rate" 			"$rotateSpeed"
+			"initialValue" 	"$startAngle"
+			"resultVar" 	"$angle"
+		}
+		"TextureTransform"
+		{
+			"translateVar" 	"$translate"
+			"rotateVar" 	"$angle"
+			"centerVar" 	"$center"
+			"resultVar" 	"$basetexturetransform"
+		}
+	}
+}
+
+
+
